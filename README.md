@@ -1,2 +1,2 @@
 # Algorithm-website
-Its an fun website to learn algorithm and data structure.
+Its a fun website to learn algorithm and data structure.
