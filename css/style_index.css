@@ -2,6 +2,9 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+body{
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
 .nav{
     height: 30px;
     width: 98%;
@@ -19,21 +22,20 @@
     font-size: 150%;
 }
 
-.index {
-    width: 66%;
-    padding: 0 10px 0 0;
-    box-sizing: border-box;
+.row{
+    width: 100%;
+}
+.index{
+    margin-top: 2%;
+    width: 30%;
     float: left;
 }
-
-.index{
-    margin: 2%;
-    width: 30%;
-    padding: 3%;
-    border-style: solid;
-    border-color: white;
-    border-right-color: lightblue;
-}
 .content{
-    padding: 3%;
+    margin-top: 2%;
+    width: 65%;
+    padding: 1%;
+    float: right;
+    border-style: solid;
+    border-color: whitesmoke;
+    border-left-color: coral;
 }
