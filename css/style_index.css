@@ -1,0 +1,35 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+header{
+    height: 10%;
+    width: 100%;
+    background-color: rgb(102, 102, 102);
+    text-align: center;
+    padding: 2%;
+    font-family: 'Oswald', sans-serif;
+    color: white;
+    font-size: 1.5em;
+}
+
+.container{
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+.cards{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.index{
+    margin: auto;
+}
+
+.content{
+    padding: 2%;
+    border-style: solid;
+    border-color: white;
+    border-left-color: brown;
+}
