@@ -1,8 +1,9 @@
 plotgraph();
-async function plotgraph(){
-    var values = await getData();
+function plotgraph(){
+    var values = getData();
     var y = values[0];
     var x = values[1];
+    var z = values[2];
     var ctx = document.getElementById('myChart');
     var myChart = new Chart(ctx, {
         type: 'line',
@@ -15,7 +16,16 @@ async function plotgraph(){
                 backgroundColor:'rgba(255, 99, 132, 0.2)',
                 borderColor:'rgba(255, 99, 132, 1)',
                 borderWidth: 1
-            }]
+            },
+            {
+                fill:false,
+                label: 'Merge Sort',
+                data: z,
+                backgroundColor:'rgba(255, 206, 86, 1)',
+                borderColor:'rgba(255, 206, 86, 1)',
+                borderWidth: 1
+            }
+        ]
         },
         options: {
             scales: {
@@ -31,17 +41,22 @@ async function plotgraph(){
 
 function getData(){
     input_lenght = [10,100,1000,2500,5000,7500];
-    time = [];
+    time1 = [];
+    time2 = [];
     for (let i = 0; i < 6; i++){
         let list = getList(input_lenght[i]);
         console.log('Actual_List '+i+':'+list);
         var t0 = performance.now();
         insertion(list);
         var t1 = performance.now();
-        time.push(t1-t0);
+        time1.push(t1-t0);
+        var t2 = performance.now();
+        mergeSort(list);
+        var t3 = performance.now();
+        time2.push(t3-t2);
     }
-    console.log(time)
-    return [input_lenght,time];
+    console.log(time1)
+    return [input_lenght,time1,time2];
 
 }
 
@@ -72,3 +87,33 @@ function insertion(arr){
     console.log(arr);
     return ;
 }
+
+function mergeSort(arr){
+    var len = arr.length;
+    if(len <2)
+       return arr;
+    var mid = Math.floor(len/2),
+        left = arr.slice(0,mid),
+        right =arr.slice(mid);
+    //send left and right to the mergeSort to broke it down into pieces
+    //then merge those
+    return merge(mergeSort(left),mergeSort(right));
+ }
+
+ function merge(left, right){
+    var result = [],
+        lLen = left.length,
+        rLen = right.length,
+        l = 0,
+        r = 0;
+    while(l < lLen && r < rLen){
+       if(left[l] < right[r]){
+         result.push(left[l++]);
+       }
+       else{
+         result.push(right[r++]);
+      }
+    }  
+    //remaining part needs to be addred to the result
+    return result.concat(left.slice(l)).concat(right.slice(r));
+  }
